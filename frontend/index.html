@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tarefas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="task-container">
+    <h1>Lista de Tarefas</h1>
+    <input type="text" id="new-task" placeholder="Adicionar nova tarefa">
+    <button id="add-task" class="btn">Adicionar</button>
+    <ul id="task-list"></ul>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById('new-task');
+    const addButton = document.getElementById('add-task');
+    const taskList = document.getElementById('task-list');
+
+    addButton.addEventListener('click', () => {
+      const taskText = taskInput.value.trim();
+      if (taskText) {
+        const li = document.createElement('li');
+        li.textContent = taskText;
+        li.addEventListener('click', () => {
+          li.classList.toggle('completed');
+        });
+        taskList.appendChild(li);
+        taskInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
